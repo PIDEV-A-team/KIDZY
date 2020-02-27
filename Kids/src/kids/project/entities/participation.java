@@ -20,6 +20,8 @@ public class participation {
     private String description;
     private enfant enfant;
 
+   
+
     public int getId_event() {
         return id_event;
     }

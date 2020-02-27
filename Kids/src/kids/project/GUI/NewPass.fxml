@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="kids.project.GUI.NewPassController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="531.0" prefWidth="765.0">
+         <children>
+            <AnchorPane id="AnchorPane" layoutX="-10.0" layoutY="-10.0" prefHeight="541.0" prefWidth="779.0" style="-fx-background-color: #f7d1bc;">
+               <children>
+                  <AnchorPane layoutX="188.0" layoutY="57.0" prefHeight="374.0" prefWidth="422.0" style="-fx-background-color: e5b39e;">
+                     <children>
+                        <Label alignment="TOP_LEFT" graphicTextGap="9.0" layoutX="58.0" layoutY="44.0" prefHeight="47.0" prefWidth="340.0" text="Modification du mot de passe" textAlignment="JUSTIFY" textFill="#1c9197" textOverrun="LEADING_ELLIPSIS">
+                           <font>
+                              <Font name="Forte" size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="ChangerMdp" layoutX="232.0" layoutY="260.0" mnemonicParsing="false" onAction="#Confimation" text="Valider" textFill="#1c9197">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Button>
+                        <Label layoutX="14.0" layoutY="153.0" prefHeight="21.0" prefWidth="125.0" text="Mot de passe :" textFill="#1c9197">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="erreur" layoutX="160.0" layoutY="322.0" />
+                        <Label layoutX="14.0" layoutY="202.0" prefHeight="21.0" prefWidth="225.0" text="Confirmer votre mot de passe :" textFill="#1c9197">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="erreur" layoutX="189.0" layoutY="331.0" />
+                        <PasswordField fx:id="NvMdp" layoutX="239.0" layoutY="141.0" />
+                        <PasswordField fx:id="ConfNvMdp" layoutX="239.0" layoutY="200.0" />
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

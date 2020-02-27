@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="597.0" prefWidth="674.0" style="-fx-background-color: f7d1bc;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kids.project.GUI.ModifierEventController">
+   <children>
+      <AnchorPane layoutX="53.0" layoutY="83.0" prefHeight="411.0" prefWidth="568.0" style="-fx-background-color: #e5b39e;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <TextField fx:id="nomEv" layoutX="193.0" layoutY="38.0" prefHeight="25.0" prefWidth="145.0" promptText="nom événement">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </TextField>
+            <Text fill="#1c9197" layoutX="29.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom : ">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#1c9197" layoutX="29.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date : ">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#1c9197" layoutX="28.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description : ">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#1c9197" layoutX="28.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu : ">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#1c9197" layoutX="29.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type : ">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#1c9197" layoutX="28.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix : ">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <TextField fx:id="lieuEv" layoutX="193.0" layoutY="124.0" prefHeight="25.0" prefWidth="145.0" promptText="lieu événement">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </TextField>
+            <TextField fx:id="prixEv" layoutX="193.0" layoutY="176.0" prefHeight="25.0" prefWidth="145.0" promptText="prix événement">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </TextField>
+            <TextField fx:id="descEv" alignment="TOP_LEFT" layoutX="190.0" layoutY="264.0" prefHeight="88.0" prefWidth="188.0" promptText="Description">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </TextField>
+            <TextField fx:id="id_Datev" layoutX="193.0" layoutY="81.0" prefHeight="25.0" prefWidth="145.0" promptText="nom événement">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </TextField>
+            <TextField fx:id="id_typev" layoutX="193.0" layoutY="219.0" prefHeight="25.0" prefWidth="145.0" promptText="prix événement">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <Button layoutX="504.0" layoutY="531.0" mnemonicParsing="false" onAction="#enregistrerEV" style="-fx-background-color: #cee78f;" text="Enregistrer" textFill="#1c9197">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Button layoutX="393.0" layoutY="531.0" mnemonicParsing="false" onAction="#annulerEV" prefHeight="31.0" prefWidth="97.0" text="Annuler" textFill="#1c9197">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>

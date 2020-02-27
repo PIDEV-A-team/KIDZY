@@ -31,11 +31,20 @@ public class EditProfileController implements Initializable {
     private Button annuler;
     @FXML
     private Text text;
-    personne p = Session.GetSession();
+  private int  enf ;
+
+    public int getEnf() {
+        return enf;
+    }
+
+    public void setEnf(int enf) {
+        this.enf = enf;
+    }    personne p = Session.GetSession();
     services_personne sp = new services_personne();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+           System.out.println(enf);
     }
 
     public String getNomE() {
@@ -80,10 +89,13 @@ public class EditProfileController implements Initializable {
 
         boolean test = sp.modifierProfil(p1, nomE.getText(), prenomE.getText(), NcinE.getText(), numTE.getText());
              back();
+            
     }
 
     @FXML
     private void annuler(ActionEvent event) throws IOException {
+      
+                
         back();
     }
             private void back() throws IOException {
@@ -102,9 +114,7 @@ public class EditProfileController implements Initializable {
             root = loader.load();
         }
         prenomE.getScene().setRoot(root);
-                
-                
-                
+                 
     }
             
             
