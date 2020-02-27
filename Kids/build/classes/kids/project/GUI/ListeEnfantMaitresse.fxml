@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="455.0" prefWidth="640.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="kids.project.GUI.ListeEnfantMaitresseController">
+   <children>
+      <AnchorPane layoutX="24.0" layoutY="118.0" prefHeight="308.0" prefWidth="582.0" style="-fx-background-color: F7d1bc;">
+         <children>
+            <ListView layoutX="321.0" layoutY="12.0" prefHeight="291.0" prefWidth="200.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

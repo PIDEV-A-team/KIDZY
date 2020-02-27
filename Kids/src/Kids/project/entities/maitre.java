@@ -12,13 +12,15 @@ package kids.project.entities;
 public class maitre extends personne {
     private int nbreclasses;
 
-    public maitre( int id, String login, String password, String nom, String prenom, String image, String cin, String tel, String role) {
-        super(id, login, password, nom, prenom, image, cin, tel, role);
+  
+   
+    public maitre( String login, String password, String nom, String prenom, String cin, String tel, String role) {
+        super(login, password, nom, prenom, cin, tel, role);
     }
 
-   
-    public maitre( String login, String password, String nom, String prenom, String image, String cin, String tel, String role) {
-        super(login, password, nom, prenom, image, cin, tel, role);
+    public maitre(int id, String login, String password, String nom, String prenom, String cin, String tel, String role) {
+        super(id,login, password, nom, prenom, cin, tel, role);
+
     }
 
    

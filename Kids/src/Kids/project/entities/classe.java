@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Kids.project.entities;
+package kids.project.entities;
 
 /**
  *
- * @author Youssef Mimouni
+ * @author ferjani
  */
 public class classe {
-    
+
     private int id_classe;
     private String libelle_cla;
     private String description;
@@ -53,36 +53,4 @@ public class classe {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "classe{" + "id_classe=" + id_classe + ", libelle_cla=" + libelle_cla + ", description=" + description + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + this.id_classe;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final classe other = (classe) obj;
-        if (this.id_classe != other.id_classe) {
-            return false;
-        }
-        return true;
-    }
-    
-    
-    
 }

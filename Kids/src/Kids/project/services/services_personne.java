@@ -8,12 +8,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import kids.project.IService.IService;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import kids.project.IServices.IService;
 import kids.project.entities.chauffeur;
 import kids.project.entities.maitre;
 import kids.project.entities.parent;
 import kids.project.entities.personne;
-import Kids.project.utils.DataBase;
+import kids.project.utiles.DataBase;
+import kids.project.utiles.StaticVariables;
 
 public class services_personne implements IService<personne> {
 
@@ -22,41 +28,103 @@ public class services_personne implements IService<personne> {
 
     public services_personne() {
         con = DataBase.getInstance().getConnection();
-
     }
 
-    @Override
-    public void Inscription(parent p) throws SQLException {
-        PreparedStatement pre = con.prepareStatement("INSERT INTO `kidzy`.`personne` ( `login`, `mdp`, `nom`, `prenom`, `image`, `cin`, `telephone`, `role`) VALUES ( ?,?,?,?,?,?,?,?);");
-        pre.setString(1, p.getLogin());
-        pre.setString(2, p.getPassword());
-        pre.setString(3, p.getNom());
-        pre.setString(4, p.getPrenom());
-        pre.setString(5, p.getImage());
-        pre.setString(6, p.getCin());
-        pre.setString(7, p.getTel());
-        pre.setString(8, "Parent");
-        pre.executeUpdate();
-    }
-
+//    @Override
+//    public void Inscription(parent p) throws SQLException {
+//        PreparedStatement pre = con.prepareStatement("INSERT INTO `kidzy`.`user` ( `username`, `password`, `nom`, `prenom`, `cin`, `tel`, `roles`) VALUES ( ?,?,?,?,?,?,?);");
+//        pre.setString(1, p.getUsername());
+//        String crypted = service_bcrypt.hashpw(p.getPassword(), StaticVariables.SALT);
+//
+//        pre.setString(2, crypted);
+//        pre.setString(3, p.getNom());
+//        pre.setString(4, p.getPrenom());
+//      
+//        pre.setString(6, p.getCin());
+//        pre.setString(7, p.getTel());
+//        pre.setString(8, "Parent");
+//        pre.executeUpdate();
+//    }
     @Override
     public void ajouter1(personne p) throws SQLException {
-        PreparedStatement pre = con.prepareStatement("INSERT INTO `kidzy`.`personne` ( `login`, `mdp`, `nom`, `prenom`, `image`, `cin`, `telephone`, `role`) VALUES ( ?,?,?,?,?,?,?,?);");
-        pre.setString(1, p.getLogin());
-        pre.setString(2, p.getPassword());
+        Random r = new Random();
+        int valeur = 1 + r.nextInt(10000000);
+         String crypted = service_bcrypt.hashpw(p.getPassword(), StaticVariables.SALT);
+
+
+        PreparedStatement pre = con.prepareStatement("INSERT INTO `kidzy`.`user` ( `username`, `password`, `nom`, `prenom`,`cin`, `tel`, `roles`,`code`) VALUES ( ?,?,?,?,?,?,?,?);");
+        pre.setString(1, p.getUsername());
+
+        pre.setString(2, crypted);
         pre.setString(3, p.getNom());
         pre.setString(4, p.getPrenom());
-        pre.setString(5, p.getImage());
-        pre.setString(6, p.getCin());
-        pre.setString(7, p.getTel());
-        pre.setString(8, p.getRole());
+        pre.setString(5, p.getCin());
+        pre.setString(6, p.getTel());
+        pre.setString(7, p.getRole());
+        pre.setInt(8, valeur);
+
         pre.executeUpdate();
+
+    }
+
+    public boolean checkUser(String username, String password) {
+
+        try {
+            PreparedStatement pt = con.prepareStatement("SELECT * FROM user where username=?");
+            pt.setString(1, username);
+            ResultSet rs = pt.executeQuery();
+            while (rs.next()) {
+                String crypted = rs.getString("password");
+                if (service_bcrypt.checkpw(password, crypted)) {
+                    return true;
+                }
+            }
+            return false;
+
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    public personne connexion(String username) throws SQLException {
+        personne per = new personne();
+        PreparedStatement pt = con.prepareStatement("SELECT * FROM user where username=?");
+        pt.setString(1, username);
+        ResultSet rs = pt.executeQuery();
+        while (rs.next()) {
+
+            per.setUsername(rs.getString("id"));
+            per.setUsername(rs.getString("username"));
+            per.setPassword(rs.getString("password"));
+            per.setNom(rs.getString("nom"));
+            per.setPrenom(rs.getString("prenom"));
+
+            per.setCin(rs.getString("cin"));
+            per.setTel(rs.getString("tel"));
+            per.setRole(rs.getString("roles"));
+
+        }
+        return per;
+    }
+
+    public String Mdp(String username) throws SQLException {
+        PreparedStatement pt = con.prepareStatement("SELECT password FROM user where username=?");
+        pt.setString(1, username);
+        String pass = "";
+        ResultSet rs = pt.executeQuery();
+        while (rs.next()) {
+
+            pass = rs.getString("password");
+
+        }
+
+        return pass;
     }
 
     @Override
     public boolean Authentification(String login, String password) throws SQLException {
         ste = con.createStatement();
-        String requeteCheck = "select * from personne where `login`= '" + login + "'AND `mdp`= '" + password + "';";
+        String requeteCheck = "select * from user where `username`= '" + login + "'AND `password`= '" + password + "';";
         ResultSet rs = ste.executeQuery(requeteCheck);
         while (rs.next()) {
             return true;
@@ -66,24 +134,26 @@ public class services_personne implements IService<personne> {
     }
 
     @Override
-    public List<personne> readAll() throws SQLException {
-        personne per = new personne();
-        List<personne> arr = new ArrayList<>();
+    public ObservableList<personne> readAll() throws SQLException {
+        ObservableList<personne> arr = FXCollections.observableArrayList();
         ste = con.createStatement();
-        ResultSet rs = ste.executeQuery("select * from personne ");
+        ResultSet rs = ste.executeQuery("select * from user ");
         while (rs.next()) {
 
-            per.setId(rs.getInt("id"));
-            per.setLogin(rs.getString("login"));
-            per.setPassword(rs.getString("mdp"));
-            per.setNom(rs.getString("nom"));
-            per.setPrenom(rs.getString("prenom"));
-            per.setImage(rs.getString("image"));
-            per.setCin(rs.getString("cin"));
-            per.setTel(rs.getString("telephone"));
-            per.setRole(rs.getString("role"));
-            //personne p=new personne(rs.getInt("id"),rs.getString("login"),rs.getString("mdp"),rs.getString("nom"),rs.getString("prenom"),rs.getString("image"),rs.getString("cin"),rs.getString("telephone"),rs.getString("role"));
-            arr.add(per);
+//            int id = rs.getInt("id");
+            String login = rs.getString("username");
+            String password = rs.getString("password");
+            String nom = rs.getString("nom");
+            String prenom = rs.getString("prenom");
+//            String image = rs.getString("image");
+            String cin = rs.getString("cin");
+            String tel = rs.getString("tel");
+            String role = rs.getString("roles");
+
+            personne p = new personne(login, password, nom, prenom, cin, tel, role);
+            // personne p = new personne(id, login, password, nom, prenom, image, cin, tel, role);
+
+            arr.add(p);
         }
         return arr;
     }
@@ -92,41 +162,77 @@ public class services_personne implements IService<personne> {
     public List<parent> readAllParent() throws SQLException {
         List<parent> arr = new ArrayList<>();
         ste = con.createStatement();
-        ResultSet rs = ste.executeQuery("select * from personne where `role`='Parent' ");
+        ResultSet rs = ste.executeQuery("select * from user where `roles`='Parent' ");
         while (rs.next()) {
             int id = rs.getInt("id");
-            String login = rs.getString("login");
-            String password = rs.getString("mdp");
+            String login = rs.getString("username");
+            String password = rs.getString("password");
             String nom = rs.getString("nom");
             String prenom = rs.getString("prenom");
-            String image = rs.getString("image");
             String cin = rs.getString("cin");
-            String tel = rs.getString("telephone");
-            String role = rs.getString("role");
-            parent p = new parent(id, login, password, nom, prenom, image, cin, tel, role);
+            String tel = rs.getString("tel");
+            String role = rs.getString("roles");
+            parent p = new parent(id, login, password, nom, prenom, cin, tel, role);
             arr.add(p);
         }
         return arr;
     }
+     public int checkPaid(int id_facture) {
+        try {
+            Statement st = con.createStatement();
+            String req = "SELECT paye,total from facture where id_facture='" + id_facture + "'  ";
+            ResultSet res = st.executeQuery(req);
+            while (res.next()) {
+                if (res.getInt("paye") == 0) {
+                    return res.getInt("total");
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(personne.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
 
-    @Override
-    public List<chauffeur> readAllChauffeur() throws SQLException {
+    }
+    public void updatePaiement(int id) {
 
-        List<chauffeur> arr = new ArrayList<>();
+        try {
+            PreparedStatement st = con.prepareStatement("UPDATE facture SET paye=1 WHERE id_parent=?");
+            st.setInt(1, id);
+            st.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(services_personne.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+//     @Override
+//    public List<parent> readAllParent() throws SQLException {
+//        List<parent> arr = new ArrayList<>();
+//        ste = con.createStatement();
+//        ResultSet rs = ste.executeQuery("select * from user where `roles`='Parent' ");
+//        while (rs.next()) {
+//            int id = rs.getInt("id");
+//            String login = rs.getString("username");
+//            String password = rs.getString("password");
+//            String nom = rs.getString("nom");
+//            String prenom = rs.getString("prenom");
+//            String image = rs.getString("image");
+//            String cin = rs.getString("cin");
+//            String tel = rs.getString("tel");
+//            String role = rs.getString("roles");
+//            parent p = new parent(id, login, password, nom, prenom, image, cin, tel, role);
+//            arr.add(p);
+//        }
+//        return arr;
+//    }
+
+    public ObservableList<String> readAllRoles() throws SQLException {
+
+        ObservableList<String> arr = FXCollections.observableArrayList();
         ste = con.createStatement();
-        ResultSet rs = ste.executeQuery("select * from personne where `role`='Chauffeur' ");
+        ResultSet rs = ste.executeQuery("Select DISTINCT (roles) from user");
         while (rs.next()) {
-            int id = rs.getInt("id");
-            String login = rs.getString("login");
-            String password = rs.getString("mdp");
-            String nom = rs.getString("nom");
-            String prenom = rs.getString("prenom");
-            String image = rs.getString("image");
-            String cin = rs.getString("cin");
-            String tel = rs.getString("telephone");
-            String role = rs.getString("role");
-            chauffeur p = new chauffeur(id, login, password, nom, prenom, image, cin, tel, role);
-            arr.add(p);
+
+            String role = rs.getString("roles");
+            arr.add(role);
         }
         return arr;
     }
@@ -136,87 +242,135 @@ public class services_personne implements IService<personne> {
 
         List<maitre> arr = new ArrayList<>();
         ste = con.createStatement();
-        ResultSet rs = ste.executeQuery("select * from personne where `role`='Maitre' ");
+        ResultSet rs = ste.executeQuery("select * from user where `roles`='Maitre' ");
         while (rs.next()) {
 
             int id = rs.getInt("id");
-            String login = rs.getString("login");
-            String password = rs.getString("mdp");
+            String login = rs.getString("username");
+            String password = rs.getString("password");
             String nom = rs.getString("nom");
             String prenom = rs.getString("prenom");
-            String image = rs.getString("image");
             String cin = rs.getString("cin");
-            String tel = rs.getString("telephone");
-            String role = rs.getString("role");
-            maitre p = new maitre(id, login, password, nom, prenom, image, cin, tel, role);
+            String tel = rs.getString("tel");
+            String role = rs.getString("roles");
+            maitre p = new maitre(id, login, password, nom, prenom, cin, tel, role);
 
             arr.add(p);
         }
         return arr;
     }
 
-    @Override
+   
     public boolean delete(personne p) throws SQLException {
         ste = con.createStatement();
-        String requeteDelete = "delete  from personne where `login`= '" + p.getLogin() + "';";
-        int a = ste.executeUpdate(requeteDelete);
-        return a != 0;
+        String requeteDelete = "delete  from user where `username`= '" + p.getUsername() + "';";
+        ste.executeUpdate(requeteDelete);
+        return true;
+
+    }
+
+    public boolean deleteP(personne p) throws SQLException {
+        ste = con.createStatement();
+        PreparedStatement pt = con.prepareStatement("delete  from user where `username`= ?;");
+        pt.setString(1, p.getUsername());
+        pt.execute();
+        return true;
 
     }
 
     @Override
     public boolean modifierNomPrenom(personne p, String nom, String prenom) throws SQLException {
-        PreparedStatement pt = con.prepareStatement("UPDATE personne SET prenom=?,nom=? WHERE login=?");
+        PreparedStatement pt = con.prepareStatement("UPDATE user SET prenom=?,nom=? WHERE username=?");
         pt.setString(1, prenom);
         pt.setString(2, nom);
-        pt.setString(3, p.getLogin());
+        pt.setString(3, p.getUsername());
         pt.execute();
         return true;
     }
 
-    @Override
-    public personne chercherPer(String log) throws SQLException {
-        personne p = new personne();
-        ste = con.createStatement();
-        PreparedStatement pt = con.prepareStatement("select * from personne where `login`=?");
-        pt.setString(1, log);
-        ResultSet rs = pt.executeQuery();
-        while (rs.next()) {
-            p.setId(rs.getInt(1));
-            p.setLogin(rs.getString(2));
-            p.setPassword(rs.getString(3));
-            p.setNom(rs.getString(4));
-            p.setPrenom(rs.getString(5));
-            p.setImage(rs.getString(6));
-            p.setCin(rs.getString(7));
-            p.setTel(rs.getString(8));
-            p.setRole(rs.getString(9));
+    public boolean modifierPersonne(personne p, String Username, String Password, String Nom, String Prenom, String Cin, String Tel, String Role) throws SQLException {
+        //String crypted = service_bcrypt.hashpw(Password, StaticVariables.SALT);    
+        PreparedStatement pt = con.prepareStatement("UPDATE user SET username=?,password=?, nom=?,prenom=?,cin=?,tel=?,roles=? WHERE username=?");
 
+        pt.setString(1, Username);
+        pt.setString(2, Password);
+        pt.setString(3, Nom);
+        pt.setString(4, Prenom);
+        pt.setString(5, Cin);
+        pt.setString(6, Tel);
+        pt.setString(7, Role);
+        pt.setString(8, p.getUsername());
+        pt.execute();
+        return true;
+
+    }
+
+    public boolean modifierProfil(personne p, String Nom, String Prenom,  String Cin, String Tel) throws SQLException {
+
+        PreparedStatement pt = con.prepareStatement("UPDATE user SET nom=?,prenom=?,cin=?,tel=? WHERE username=?");
+        pt.setString(1, Nom);
+        pt.setString(2, Prenom);
+        pt.setString(3, Cin);
+        pt.setString(4, Tel);
+        pt.setString(5, p.getUsername());
+        pt.executeUpdate();
+        return true;
+
+    }
+
+    @Override
+    public ArrayList<personne> chercherPer(String n) throws SQLException {
+
+        ArrayList<personne> arr = new ArrayList<>();
+        ste = con.createStatement();
+        ResultSet rs = ste.executeQuery("SELECT * FROM `user` WHERE `username` LIKE '%" + n + "%'");
+        while (rs.next()) {
+
+            int id = rs.getInt("id");
+            String login = rs.getString("username");
+            String password = rs.getString("password");
+            String nom = rs.getString("nom");
+            String prenom = rs.getString("prenom");
+            String cin = rs.getString("cin");
+            String tel = rs.getString("tel");
+            String role = rs.getString("roles");
+            personne p = new personne(id, login, password, nom, prenom, cin, tel, role);
+
+            arr.add(p);
         }
-        return p;
+        return arr;
+
     }
 
     @Override
     public ArrayList<personne> triParNom() throws SQLException {
         ArrayList<personne> arr = new ArrayList<>();
         ste = con.createStatement();
-        ResultSet rs = ste.executeQuery("select * from personne ");
+        ResultSet rs = ste.executeQuery("select * from user ");
         while (rs.next()) {
             int id = rs.getInt("id");
-            String login = rs.getString("login");
-            String password = rs.getString("mdp");
+            String login = rs.getString("username");
+            String password = rs.getString("password");
             String nom = rs.getString("nom");
             String prenom = rs.getString("prenom");
-            String image = rs.getString("image");
             String cin = rs.getString("cin");
-            String tel = rs.getString("telephone");
-            String role = rs.getString("role");
-            personne p = new personne(id, login, password, nom, prenom, image, cin, tel, role);
+            String tel = rs.getString("tel");
+            String role = rs.getString("roles");
+            personne p = new personne(id, login, password, nom, prenom, cin, tel, role);
             arr.add(p);
-            Collections.sort(arr, new personne());
 
         }
+        Collections.sort(arr, new personne());
         return arr;
     }
 
+    @Override
+    public List<chauffeur> readAllChauffeur() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void Inscription(parent t) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

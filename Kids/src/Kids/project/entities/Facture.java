@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Kids.project.entities;
+package kids.project.entities;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -17,6 +17,7 @@ public class Facture {
 	private double total ;
 	private Date date_facture ;
         private Boolean paye ;
+    
 
     public Facture(double total, Boolean paye) {
         this.total = total;

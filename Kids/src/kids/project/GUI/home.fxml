@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="534.0" prefWidth="848.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kids.project.GUI.HomeController">
+   <children>
+      <AnchorPane layoutY="1.0" prefHeight="531.0" prefWidth="190.0" style="-fx-background-color: #e5b39e;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Button fx:id="id_acceuil" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-6.0" layoutY="154.0" mnemonicParsing="false" onAction="#acceuil" prefHeight="53.0" prefWidth="212.0" style="-fx-background-color: #e5b39e;" stylesheets="@../../../../../fullpackstyling.css" text="       Acceuil" textFill="#066570">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="id_user" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="-6.0" layoutY="204.0" mnemonicParsing="false" onAction="#user" prefHeight="53.0" prefWidth="212.0" style="-fx-background-color: #e5b39e;" stylesheets="@../../../../../fullpackstyling.css" text="       Utilisateurs" textFill="#066570">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="42.0" fitWidth="56.0" layoutX="22.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Image7.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="29.0" layoutX="35.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/hooome.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="id_reclam" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="1.0" layoutY="473.0" mnemonicParsing="false" onAction="#reclamer" prefHeight="53.0" prefWidth="204.0" style="-fx-background-color: #e5b39e;" stylesheets="@../../../../../fullpackstyling.css" text="       Réclamations" textFill="#066570">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="33.0" fitWidth="52.0" layoutX="32.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Image6.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="id_event" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="1.0" layoutY="419.0" mnemonicParsing="false" onAction="#event" prefHeight="53.0" prefWidth="204.0" style="-fx-background-color: #e5b39e;" stylesheets="@../../../../../fullpackstyling.css" text="       Evénements" textFill="#066570">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="33.0" fitWidth="52.0" layoutX="22.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Image4.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="id_enfant" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutY="259.0" mnemonicParsing="false" onAction="#enfant" prefHeight="53.0" prefWidth="204.0" style="-fx-background-color: #e5b39e;" stylesheets="@../../../../../fullpackstyling.css" text="       Enfants" textFill="#066570">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="42.0" fitWidth="39.0" layoutX="29.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Image9.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="id_scolaire" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutY="313.0" mnemonicParsing="false" onAction="#scolaire" prefHeight="53.0" prefWidth="204.0" style="-fx-background-color: #e5b39e;" stylesheets="@../../../../../fullpackstyling.css" text="       Scolarité" textFill="#066570">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="42.0" fitWidth="39.0" layoutX="29.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Image10.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="id_paiement" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="1.0" layoutY="366.0" mnemonicParsing="false" onAction="#paiement" prefHeight="53.0" prefWidth="204.0" style="-fx-background-color: #e5b39e;" stylesheets="@../../../../../fullpackstyling.css" text="       Paiement" textFill="#066570">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="62.0" fitWidth="63.0" layoutX="19.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Image11.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="135.0" fitWidth="177.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Image14.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Button fx:id="id_admin" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="784.0" layoutY="16.0" mnemonicParsing="false" onAction="#admin" prefHeight="53.0" prefWidth="50.0" style="-fx-background-color: f7d1bc;" stylesheets="@../../../../../fullpackstyling.css" textFill="#066570">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <ImageView fitHeight="42.0" fitWidth="50.0" layoutX="788.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Kidss/src/kids/project/images/Image16.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="id_notif" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="725.0" layoutY="16.0" mnemonicParsing="false" onAction="#notifier" prefHeight="53.0" prefWidth="50.0" style="-fx-background-color: f7d1bc;" stylesheets="@../../../../../fullpackstyling.css" textFill="#066570">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="734.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Kidss/src/kids/project/images/Image17.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="315.0" layoutY="68.0" prefHeight="45.0" prefWidth="296.0" text="Bienvenue chez Kidzy!" textAlignment="CENTER" textFill="#066570">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="223.0" layoutY="123.0" prefHeight="91.0" prefWidth="194.0" style="-fx-background-color: #318ce7;">
+         <children>
+            <Label layoutX="65.0" layoutY="62.0" text="Enfants" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lab_enfant" layoutX="82.0" layoutY="26.0" onDragDetected="#nbre_enfant" text="15" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="432.0" layoutY="123.0" prefHeight="91.0" prefWidth="194.0" style="-fx-background-color: #FFA500;">
+         <children>
+            <Label layoutX="50.0" layoutY="61.0" text="Maitresses" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lab_maitresse" layoutX="78.0" layoutY="26.0" prefHeight="39.0" prefWidth="39.0" text="7" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="641.0" layoutY="123.0" prefHeight="91.0" prefWidth="194.0" style="-fx-background-color: #096a09;">
+         <children>
+            <Label layoutX="68.0" layoutY="61.0" text="Enfants" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lab" layoutX="82.0" layoutY="26.0" text="15" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <PieChart fx:id="chart" layoutX="604.0" layoutY="267.0" prefHeight="228.0" prefWidth="228.0" />
+   </children>
+</AnchorPane>

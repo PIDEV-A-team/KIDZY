@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="571.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kids.project.GUI.EditProfileController">
+   <children>
+      <AnchorPane layoutX="43.0" layoutY="74.0" prefHeight="381.0" prefWidth="467.0" style="-fx-background-color: #e5b39e;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <TextField layoutX="150.0" layoutY="38.0" prefHeight="25.0" prefWidth="145.0" promptText="nom événement">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </TextField>
+            <Text fill="#1c9197" layoutX="29.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom : ">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#1c9197" layoutX="29.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date : ">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#1c9197" layoutX="28.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description : ">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#1c9197" layoutX="28.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu : ">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#1c9197" layoutX="29.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type : ">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#1c9197" layoutX="28.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix : ">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Text>
+            <TextField layoutX="150.0" layoutY="124.0" prefHeight="25.0" prefWidth="145.0" promptText="lieu événement">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </TextField>
+            <TextField layoutX="150.0" layoutY="177.0" prefHeight="25.0" prefWidth="145.0" promptText="prix événement">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </TextField>
+            <TextField alignment="TOP_LEFT" layoutX="150.0" layoutY="262.0" prefHeight="88.0" prefWidth="188.0" promptText="Description">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </TextField>
+            <DatePicker layoutX="150.0" layoutY="81.0" prefHeight="25.0" prefWidth="145.0" promptText="ajouter date" />
+            <RadioButton layoutX="150.0" layoutY="223.0" mnemonicParsing="false" text="type1" textFill="#1c9197">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="234.0" layoutY="223.0" mnemonicParsing="false" text="type2" textFill="#1c9197">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </RadioButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="AnchorPane" layoutX="-13.0" prefHeight="571.0" prefWidth="780.0" style="-fx-background-color: f7d1bc;">
+         <children>
+            <AnchorPane layoutX="143.0" layoutY="102.0" prefHeight="354.0" prefWidth="545.0" style="-fx-background-color: #e5b39e;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <TextField fx:id="nomE" layoutX="191.0" layoutY="80.0" prefHeight="25.0" prefWidth="145.0">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </TextField>
+                  <Text fill="#1c9197" layoutX="29.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom : ">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#1c9197" layoutX="29.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom : ">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#1c9197" layoutX="29.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N°CIN:" wrappingWidth="75.73632600903511">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#1c9197" layoutX="29.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Num.téléphone : ">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="numTE" layoutX="191.0" layoutY="176.0" prefHeight="25.0" prefWidth="145.0">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </TextField>
+                  <TextField fx:id="prenomE" layoutX="191.0" layoutY="123.0" prefHeight="25.0" prefWidth="145.0">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </TextField>
+                  <TextField fx:id="NcinE" layoutX="191.0" layoutY="223.0" prefHeight="25.0" prefWidth="145.0">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </TextField>
+               </children>
+            </AnchorPane>
+            <Button fx:id="valider" layoutX="565.0" layoutY="481.0" mnemonicParsing="false" onAction="#valider" prefHeight="31.0" prefWidth="97.0" style="-fx-background-color: #cee78f;" text="Valider" textFill="#1c9197">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button fx:id="annuler" layoutX="451.0" layoutY="481.0" mnemonicParsing="false" onAction="#annuler" prefHeight="31.0" prefWidth="97.0" text="Annuler" textFill="#1c9197">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Text fx:id="text" fill="#066570" layoutX="355.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile">
+               <font>
+                  <Font name="Forte" size="30.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

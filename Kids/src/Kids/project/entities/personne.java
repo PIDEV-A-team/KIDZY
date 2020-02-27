@@ -1,56 +1,138 @@
-
 package kids.project.entities;
 
+import java.sql.Date;
 import java.util.Comparator;
 
+public class personne implements Comparator<personne> {
 
-public class personne implements Comparator<personne>{
     private int id;
-    private String login;
+    private String username;
+    private String username_canonical;
+    private String email;
+    private String email_canonical;
+    private short enabled;
+    private String salt;
+    private Date lastLogin;
+    private Date passwordRequestedAt;
     private String password;
+    private String confirmation_token;
     private String nom;
     private String prenom;
-    private String image;
     private String cin;
     private String tel;
     private String role;
+    private int code;
+    private String tentative;
+
+    public personne(String username, String password, String nom, String prenom, String cin, String tel, String role, int code, String tentative) {
+        this.username = username;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.cin = cin;
+        this.tel = tel;
+        this.role = role;
+        this.code = code;
+        this.tentative = tentative;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getTentative() {
+        return tentative;
+    }
+
+    public void setTentative(String tentative) {
+        this.tentative = tentative;
+    }
 
     public personne() {
     }
 
-    public personne(int id, String login, String password, String nom, String prenom, String image, String cin, String tel, String role) {
+    public personne(int id, String username, String password, String nom, String prenom, String cin, String tel, String role) {
         this.id = id;
-        this.login = login;
+        this.username = username;
         this.password = password;
         this.nom = nom;
         this.prenom = prenom;
-        this.image = image;
-        this.cin = cin;
-        this.tel = tel;
-        this.role = role;
-    }
-    public personne( String login, String password, String nom, String prenom, String image, String cin, String tel, String role) {
-        
-        this.login = login;
-        this.password = password;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.image = image;
+
         this.cin = cin;
         this.tel = tel;
         this.role = role;
     }
 
-    public String getImage() {
-        return image;
+    public personne( String username, String password, String nom, String prenom,String cin, String tel, String role) {
+
+        this.username = username;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.cin = cin;
+        this.tel = tel;
+        this.role = role;
+    }
+    public personne( String username,String password,String nom,String prenom , String cin, String tel, String role,int code) {
+
+        this.username = username;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.cin = cin;
+        this.tel = tel;
+        this.role = role;
+        this.code=code;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public personne(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
     }
 
-   
-    
+    public personne(String username) {
+        this.username = username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setUsername_canonical(String username_canonical) {
+        this.username_canonical = username_canonical;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setEmail_canonical(String email_canonical) {
+        this.email_canonical = email_canonical;
+    }
+
+    public void setEnabled(short enabled) {
+        this.enabled = enabled;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
+    public void setPasswordRequestedAt(Date passwordRequestedAt) {
+        this.passwordRequestedAt = passwordRequestedAt;
+    }
+
+    public void setConfirmation_token(String confirmation_token) {
+        this.confirmation_token = confirmation_token;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -62,10 +144,6 @@ public class personne implements Comparator<personne>{
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public void setPassword(String password) {
@@ -96,10 +174,6 @@ public class personne implements Comparator<personne>{
         return prenom;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -116,12 +190,46 @@ public class personne implements Comparator<personne>{
         return role;
     }
 
-    @Override
-    public String toString() {
-        return "personne{" + "id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom=" + prenom + ", image=" + image + ", cin=" + cin + ", tel=" + tel + ", role=" + role + '}';
+    public String getUsername() {
+        return username;
     }
 
-    
+    public String getUsername_canonical() {
+        return username_canonical;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getEmail_canonical() {
+        return email_canonical;
+    }
+
+    public short getEnabled() {
+        return enabled;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public Date getPasswordRequestedAt() {
+        return passwordRequestedAt;
+    }
+
+    public String getConfirmation_token() {
+        return confirmation_token;
+    }
+
+    @Override
+    public String toString() {
+        return "personne{" + "id=" + id + ", username=" + username + ", password=" + password + ", nom=" + nom + ", prenom=" + prenom + ", cin=" + cin + ", tel=" + tel + ", role=" + role + '}';
+    }
 
     @Override
     public int hashCode() {
@@ -147,14 +255,9 @@ public class personne implements Comparator<personne>{
         }
         return true;
     }
-@Override
-   public int compare(personne o1, personne o2) { 
+
+    public int compare(personne o1, personne o2) {
         return (o1.getNom().compareTo(o2.getNom()));
     }
-    
 
-   
-    
-
-   
 }
