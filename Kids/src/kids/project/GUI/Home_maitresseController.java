@@ -22,6 +22,8 @@ public class Home_maitresseController implements Initializable {
 
     @FXML
     private Button id_admin;
+    @FXML
+    private Button btn_enfant;
 
     /**
      * Initializes the controller class.
@@ -50,6 +52,14 @@ public class Home_maitresseController implements Initializable {
                 Parent root = loader.load();
                 id_admin.getScene().setRoot(root);
                 Session.DestroySession();
+    }
+
+    @FXML
+    private void liste_enfants(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("ListeEnfantMaitresse.fxml"));
+                Parent root = loader.load();
+                id_admin.getScene().setRoot(root);
+        
     }
     
 }

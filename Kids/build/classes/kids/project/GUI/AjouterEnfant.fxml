@@ -26,8 +26,8 @@
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Label>
-            <ComboBox fx:id="combo_classe" layoutX="168.0" layoutY="286.0" prefHeight="25.0" prefWidth="174.0" />
-            <Label layoutX="14.0" layoutY="289.0" text="Classe : " textFill="#515050">
+            <ComboBox fx:id="combo_classe" layoutX="167.0" layoutY="313.0" prefHeight="25.0" prefWidth="174.0" />
+            <Label layoutX="13.0" layoutY="318.0" text="Classe : " textFill="#515050">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
@@ -45,6 +45,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
+            <Button fx:id="importebtn" layoutX="278.0" layoutY="276.0" mnemonicParsing="false" onAction="#ajouter_image" text="Importer" />
          </children>
       </AnchorPane>
       <Label layoutX="121.0" layoutY="49.0" prefHeight="36.0" prefWidth="196.0" text="Ajouter un enfant" textAlignment="CENTER" underline="true">

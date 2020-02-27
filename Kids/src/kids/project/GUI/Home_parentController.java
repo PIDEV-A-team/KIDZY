@@ -1,10 +1,13 @@
-
 package kids.project.GUI;
 
-import java.awt.TextField;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,11 +15,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import kids.project.entities.enfantClasse;
 import kids.project.entities.personne;
+import kids.project.services.ServiceEnfant;
 import kids.project.services.Session;
 
 /**
@@ -25,7 +29,7 @@ import kids.project.services.Session;
  * @author ASUS
  */
 public class Home_parentController implements Initializable {
-
+    
     @FXML
     private Button id_acceuil;
     @FXML
@@ -50,7 +54,6 @@ public class Home_parentController implements Initializable {
     private ImageView id_user11;
     @FXML
     private Button btn_ajouter;
-    private Label text;
 
     /**
      * Initializes the controller class.
@@ -58,14 +61,25 @@ public class Home_parentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void acceuil(ActionEvent event) {
     }
 
     @FXML
-    private void enfant(ActionEvent event) {
+    private void enfant(ActionEvent event) throws IOException, SQLException {
+        personne p = Session.GetSession();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Liste_enfant_parent.fxml"));
+        Parent root = loader.load();
+        Liste_enfant_parentController sp = loader.getController();
+        ServiceEnfant ser = new ServiceEnfant();
+        System.out.println(p.getId());
+
+        sp.liste = ser.getEnfParent(p.getUsername());
+
+        sp.listeEnfant.setItems(sp.liste);
+        id_admin.getScene().setRoot(root);
     }
 
     @FXML
@@ -77,14 +91,7 @@ public class Home_parentController implements Initializable {
     }
 
     @FXML
-    private void payer(ActionEvent event) throws IOException {
-    	 Stage stage = new Stage();
-         Parent root = FXMLLoader
-                 .load(getClass().getResource("reglement.fxml"));
-         Scene scene = new Scene(root);
-         stage.setTitle("paiement");
-         stage.setScene(scene);
-         stage.show();
+    private void payer(ActionEvent event) {
     }
 
     @FXML
@@ -97,17 +104,16 @@ public class Home_parentController implements Initializable {
 
     @FXML
     private void admin(ActionEvent event) throws IOException {
-          FXMLLoader loader = new FXMLLoader(getClass().getResource("EditProfile.fxml"));
-                Parent root = loader.load();
-                EditProfileController spc = loader.getController();
-                personne p =Session.GetSession();
-                spc.setNomE(p.getNom());
-                spc.setPrenomE(p.getPrenom());
-                spc.setNumTE(p.getTel());
-                spc.setNcinE(p.getCin());
-                id_user.getScene().setRoot(root);
-                
-        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditProfile.fxml"));
+        Parent root = loader.load();
+        EditProfileController spc = loader.getController();
+        personne p = Session.GetSession();
+        spc.setNomE(p.getNom());
+        spc.setPrenomE(p.getPrenom());
+        spc.setNumTE(p.getTel());
+        spc.setNcinE(p.getCin());
+        id_user.getScene().setRoot(root);
+
     }
 
     @FXML
@@ -117,14 +123,14 @@ public class Home_parentController implements Initializable {
     @FXML
     private void logoutP(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLLogin.fxml"));
-                Parent root = loader.load();
-                id_user.getScene().setRoot(root);
-                Session.DestroySession();
+        Parent root = loader.load();
+        id_user.getScene().setRoot(root);
+        Session.DestroySession();
     }
 
     @FXML
     private void Ajouter(ActionEvent event) throws IOException {
-          Stage stage = new Stage();
+        Stage stage = new Stage();
         Parent root = FXMLLoader
                 .load(getClass().getResource("Ajouter_son_enfant.fxml"));
         Scene scene = new Scene(root);

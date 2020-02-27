@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -46,7 +48,6 @@ public class HomeController implements Initializable {
     private Button id_scolaire;
     @FXML
     private Button id_paiement;
-    
     @FXML
     private Button id_admin;
     @FXML
@@ -62,30 +63,56 @@ public class HomeController implements Initializable {
     private PieChart chart;
 
     ObservableList< PieChart.Data> piechartdata;
-    ArrayList< String> p = new ArrayList< String>();
-    ArrayList< Integer> c = new ArrayList< Integer>();
+
+//    ArrayList< String> p = new ArrayList< String>();
+//    ArrayList< Integer> c = new ArrayList< Integer>();
     private Connection con;
     private Statement ste;
 
+    ServiceParticipation sp = new ServiceParticipation();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        chart();
+        //  chart();
 //        loadData();
 //
 //        chart.setData(piechartdata);
+
+//       rafraichir();
     }
 
-    public ObservableList<PieChart.Data> chart() {
-        ServiceParticipation p = new ServiceParticipation();
-        ObservableList<PieChart.Data> pieChartData;
-        pieChartData = FXCollections.observableArrayList(
-                new PieChart.Data("Participer", p.getEnfantP()));
+//    public void rafraichir() {
+//        ResultSet stat = null;
+//        try {
+//            stat = sp.getEnfant();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        chart.getData().clear();
+//
+//        try {
+//            while (stat.next()) {
+//                chart.getData().add(new PieChart.Data(stat.getString(1), stat.getDouble(2)));
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
-        chart.setData(pieChartData);
-        return pieChartData;
+//    }
 
-    }
-
+    
+//    public ObservableList<PieChart.Data> chart() {
+//        ServiceParticipation p = new ServiceParticipation();
+//        ObservableList<PieChart.Data> pieChartData;
+//        pieChartData = FXCollections.observableArrayList(
+//                new PieChart.Data("Participer", p.getEnfantP()));
+//
+//        chart.setData(pieChartData);
+//        return pieChartData;
+//
+//    }
+    
+    
 //    public void loadData() {
 //
 //        String query = "SELECT COUNT(id_enfant)from participation GROUP BY id_event "; 
@@ -107,7 +134,12 @@ public class HomeController implements Initializable {
 //            System.out.println(e.getMessage());
 //        }
 //    }
-
+    
+   
+    
+    
+    
+    
     @FXML
     private void acceuil(ActionEvent event) {
     }
@@ -133,15 +165,13 @@ public class HomeController implements Initializable {
         Parent root = loader.load();
         id_enfant.getScene().setRoot(root);
     }
+
     @FXML
     private void scolaire(ActionEvent event) {
     }
 
     @FXML
-    private void paiement(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("gerer_lespacks.fxml"));
-        Parent root = loader.load();
-        id_paiement.getScene().setRoot(root);
+    private void paiement(ActionEvent event) {
     }
 
     @FXML
@@ -178,6 +208,8 @@ public class HomeController implements Initializable {
 //        
 //       return nbre ;
 //    }
+    
+    
     @FXML
     private void nbre_enfant(MouseEvent event) {
     }

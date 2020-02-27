@@ -72,7 +72,7 @@ public class enfant {
 
     @Override
     public String toString() {
-        return "enfant{" + "id_enfant=" + id_enfant + ", parent=" + parent + ", classe=" + classe + ", nom_enfant=" + nom_enfant + ", prenom_enfant=" + prenom_enfant + ", image_enfant=" + image_enfant + ", dateN_enfant=" + dateN_enfant + '}';
+return " " + nom_enfant +  prenom_enfant ;
     }
 
     @Override

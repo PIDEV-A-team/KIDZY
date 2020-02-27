@@ -56,8 +56,8 @@ public class FXMLLoginController implements Initializable {
                 Parent root = loader.load();
                 username.getScene().setRoot(root);
 
-            } else if (U.getRole().equals("Maitre")) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("home_parent.fxml"));
+            } else if (U.getRole().equals("Maitresse")) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("home_maitresse.fxml"));
                 Parent root = loader.load();
                 username.getScene().setRoot(root);
             } else if (U.getRole().equals("Chauffeur")) {

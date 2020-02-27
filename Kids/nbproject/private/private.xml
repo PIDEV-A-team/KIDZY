@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Youssef%20Mimouni/Desktop/New%20folder%20(2)/Kids/src/kids/project/GUI/Mes_reglementController.java</file>
-            <file>file:/C:/Users/Youssef%20Mimouni/Desktop/New%20folder%20(2)/Kids/src/kids/project/GUI/Mes_reglement.fxml</file>
-            <file>file:/C:/Users/Youssef%20Mimouni/Desktop/New%20folder%20(2)/Kids/src/kids/project/GUI/MainClass.java</file>
-            <file>file:/C:/Users/Youssef%20Mimouni/Desktop/New%20folder%20(2)/Kids/src/kids/project/GUI/Ajouter_son_enfantController.java</file>
-            <file>file:/C:/Users/Youssef%20Mimouni/Desktop/New%20folder%20(2)/Kids/src/kids/project/services/FactureService.java</file>
-            <file>file:/C:/Users/Youssef%20Mimouni/Desktop/New%20folder%20(2)/Kids/src/kids/project/entities/Facture.java</file>
-            <file>file:/C:/Users/Youssef%20Mimouni/Desktop/New%20folder%20(2)/Kids/src/kids/project/GUI/ReglementController.java</file>
+            <file>file:/C:/Users/ferjani/Documents/NetBeansProjects/Kids/src/kids/project/services/ServiceEnfant.java</file>
+            <file>file:/C:/Users/ferjani/Documents/NetBeansProjects/Kids/src/kids/project/services/Upload.java</file>
+            <file>file:/C:/Users/ferjani/Documents/NetBeansProjects/Kids/src/kids/project/GUI/AfficherListeEnfantsController.java</file>
+            <file>file:/C:/Users/ferjani/Documents/NetBeansProjects/Kids/src/kids/project/tests/Kids.java</file>
+            <file>file:/C:/Users/ferjani/Documents/NetBeansProjects/Kids/src/kids/project/GUI/HomeController.java</file>
+            <file>file:/C:/Users/ferjani/Documents/NetBeansProjects/Kids/src/kids/project/GUI/MainClass.java</file>
+            <file>file:/C:/Users/ferjani/Documents/NetBeansProjects/Kids/src/kids/project/GUI/AjouterEnfantController.java</file>
+            <file>file:/C:/Users/ferjani/Documents/NetBeansProjects/Kids/src/kids/project/utiles/Pdf.java</file>
         </group>
     </open-files>
 </project-private>

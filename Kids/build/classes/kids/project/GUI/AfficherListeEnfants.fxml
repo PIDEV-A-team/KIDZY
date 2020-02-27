@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="523.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kids.project.GUI.AfficherListeEnfantsController">
+<AnchorPane id="AnchorPane" fx:id="btn_actualiser" prefHeight="523.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kids.project.GUI.AfficherListeEnfantsController">
    <children>
       <HBox layoutY="-9.0" prefHeight="75.0" prefWidth="792.0" style="-fx-background-color: #e5b39e;">
          <effect>
@@ -117,7 +117,7 @@
             <DropShadow blurType="ONE_PASS_BOX" color="#eae4e4" />
          </effect>
          <children>
-            <TableView fx:id="tableau" layoutX="359.0" layoutY="49.0" onSort="#loadListeEnfant" prefHeight="305.0" prefWidth="394.0">
+            <TableView fx:id="tableau" layoutX="359.0" layoutY="48.0" onSort="#loadListeEnfant" prefHeight="305.0" prefWidth="394.0">
               <columns>
                 <TableColumn fx:id="txt_nom" prefWidth="88.0" text="Nom" />
                 <TableColumn fx:id="txt_prenom" prefWidth="106.0" text="Prenom" />
@@ -164,11 +164,12 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="id_imprimer" layoutX="661.0" layoutY="358.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="92.0" style="-fx-background-color: #F08080;" text="Imprimer" textFill="WHITE">
+            <Button fx:id="id_imprimer" layoutX="661.0" layoutY="358.0" mnemonicParsing="false" onAction="#imprimer" prefHeight="31.0" prefWidth="92.0" style="-fx-background-color: #F08080;" text="Imprimer" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
+            <Button fx:id="btn_" layoutX="384.0" layoutY="362.0" mnemonicParsing="false" onAction="#vider_année" text="actualiser" />
          </children>
       </AnchorPane>
    </children>

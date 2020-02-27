@@ -5,6 +5,9 @@
  */
 package kids.project.GUI;
 
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.DocumentException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -29,11 +32,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import kids.project.entities.enfant;
 import kids.project.entities.enfantClasse;
 import kids.project.services.ServiceClasse;
 import kids.project.services.ServiceEnfant;
+import kids.project.utiles.Pdf;
 
 /**
  * FXML Controller class
@@ -91,6 +96,12 @@ public class AfficherListeEnfantsController implements Initializable {
     public ObservableList<enfantClasse> liste = FXCollections.observableArrayList();
     enfantClasse enf = new enfantClasse();
     ServiceEnfant ser = new ServiceEnfant();
+    @FXML
+    private AnchorPane btn_actualiser;
+    @FXML
+    private Button id_imprimer;
+    @FXML
+    private Button btn_;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -101,7 +112,7 @@ public class AfficherListeEnfantsController implements Initializable {
 
             combo_classe.setItems(listeClasse);
         } catch (SQLException ex) {
-            Logger.getLogger(FXMLReadMaitreController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AfficherListeEnfantsController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -231,6 +242,23 @@ public class AfficherListeEnfantsController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(AfficherListeEnfantsController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void vider_année(ActionEvent event) {
+        
+        ServiceEnfant ser = new ServiceEnfant();
+        
+        
+        
+    
+        
+    }
+
+    @FXML
+    private void imprimer(ActionEvent event) throws DocumentException, BadElementException, IOException, FileNotFoundException, InterruptedException, SQLException {
+        Pdf p = new Pdf();
+       p.GeneratePdf("liste des enfants");
     }
 
 }

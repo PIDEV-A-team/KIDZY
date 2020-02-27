@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="456.0" prefWidth="420.0" style="-fx-background-color: F7d1bc;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="kids.project.GUI.ListeEnfantEventController">
+   <children>
+      <BorderPane layoutX="70.0" layoutY="89.0" prefHeight="353.0" prefWidth="275.0">
+         <center>
+            <TableView fx:id="tab" prefHeight="353.0" prefWidth="290.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="col_nom" prefWidth="136.0" text="Nom" />
+                <TableColumn fx:id="col_prenom" prefWidth="138.0" text="Prenom" />
+              </columns>
+            </TableView>
+         </center>
+      </BorderPane>
+      <Label layoutX="120.0" layoutY="31.0" text="Liste des participants " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

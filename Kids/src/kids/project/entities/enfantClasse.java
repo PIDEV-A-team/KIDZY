@@ -50,6 +50,12 @@ public class enfantClasse {
         this.dateN_enfant = dateN_enfant;
         this.id_classe = id_classe;
     }
+    public enfantClasse(String nom_enfant, String prenom_enfant,  String libelle_cla) {
+        this.nom_enfant = nom_enfant;
+        this.prenom_enfant = prenom_enfant;
+        this.libelle_cla = libelle_cla;
+        
+    }
 
     public enfantClasse(int id_user,  int id_classe,String nomP, String prenomP, String img, String date) {
         
@@ -134,7 +140,7 @@ public class enfantClasse {
 
     @Override
     public String toString() {
-        return "enfantClasse{" + "nom_enfant=" + nom_enfant + ", prenom_enfant=" + prenom_enfant + ", libelle_cla=" + libelle_cla + ", dateN_enfant=" + dateN_enfant + '}';
+        return  " " + nom_enfant +" " +  prenom_enfant ;
     }
     
     

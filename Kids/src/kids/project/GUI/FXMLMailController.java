@@ -5,7 +5,7 @@
  */
 package kids.project.GUI;
 
-import  com.email.durgesh.Email;
+import com.email.durgesh.Email;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -17,7 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
-import javax.mail.*;
+import javax.mail.MessagingException;
 import kids.project.services.services_personne;
 
 /**

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="516.0" prefWidth="421.0" style="-fx-background-color: F7d1bc;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kids.project.GUI.ModifierEnfantController">
+   <children>
+      <Label layoutX="117.0" layoutY="58.0" text="Modifier un enfant" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="142.0" text="Nom :" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="185.0" text="Prenom :" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="221.0" text="Date de naissance :" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="261.0" text="Image :" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="306.0" text="Classe : " textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_nom" layoutX="219.0" layoutY="138.0" prefHeight="25.0" prefWidth="168.0" />
+      <TextField fx:id="txt_prenom" layoutX="219.0" layoutY="185.0" prefHeight="25.0" prefWidth="168.0" />
+      <TextField fx:id="txt_img" layoutX="219.0" layoutY="269.0" prefHeight="25.0" prefWidth="174.0" />
+      <ComboBox fx:id="com_classse" layoutX="219.0" layoutY="314.0" prefHeight="25.0" prefWidth="174.0" />
+      <DatePicker fx:id="txt_date" layoutX="217.0" layoutY="229.0" />
+   </children>
+</AnchorPane>

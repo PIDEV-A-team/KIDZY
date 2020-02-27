@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="502.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kids.project.GUI.Home_maitresseController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="513.0" prefWidth="769.0" style="-fx-background-color: f7d1bc;">
+      <AnchorPane id="AnchorPane" prefHeight="513.0" prefWidth="769.0" style="-fx-background-color: #ffff;">
          <children>
             <VBox layoutX="3.0" layoutY="4.0" prefHeight="505.0" prefWidth="98.0" style="-fx-background-radius: 15 0 0 15; -fx-background-color: #e5b39e;" styleClass="button7" stylesheets="@../../../../../fullpackstyling.css">
                <children>
@@ -27,7 +27,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="87.0" prefWidth="98.0" style="-fx-background-color: #e5b39e;" styleClass="button3" stylesheets="@../../../../../DeliManagement/src/com/swr/GUI/Front/fullpackstyling.css" text="Enfants" textFill="#066570">
+                  <Button fx:id="btn_enfant" contentDisplay="TOP" mnemonicParsing="false" onAction="#liste_enfants" prefHeight="87.0" prefWidth="98.0" style="-fx-background-color: #e5b39e;" styleClass="button3" stylesheets="@../../../../../DeliManagement/src/com/swr/GUI/Front/fullpackstyling.css" text="Enfants" textFill="#066570">
                      <graphic>
                         <ImageView fitHeight="29.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                            <image>

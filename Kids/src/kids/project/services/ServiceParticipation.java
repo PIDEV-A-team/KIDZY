@@ -18,26 +18,35 @@ import kids.project.utiles.DataBase;
  * @author ferjani
  */
 public class ServiceParticipation {
-      private  Connection con;
+
+    private Connection con;
     private Statement ste;
-     
-    public ServiceParticipation(){
+
+    public ServiceParticipation() {
         con = DataBase.getInstance().getConnection();
     }
-    
-    public int getEnfantP() {
-        String req="SELECT COUNT(id_enfant) as nombre from participation GROUP BY id_event";  
-        int p=0;
-        try {
-            ste=con.createStatement();
-            ResultSet res=ste.executeQuery(req);
-            while(res.next()){
-            p=res.getInt(1);
-        }
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceParticipation.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return p;
-    }
-    
+
+//    public ResultSet getEnfant() throws SQLException {
+//        
+//        
+//        String req="SELECT COUNT(id_enfant) as nombre from participation GROUP BY id_event";  
+//        
+//        
+//        int p=0;
+//        try {
+//            ste=con.createStatement();
+//            ResultSet res=ste.executeQuery(req);
+//            while(res.next()){
+//           // p=res.getInt(1);
+//        }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceParticipation.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return ste.executeQuery(req);
+//        
+//
+////        ResultSet rs = ste.executeQuery("SELECT COUNT(id_event)from participation GROUP BY id_event");
+////        return rs;
+//  }
+
 }
