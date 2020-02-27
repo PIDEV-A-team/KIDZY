@@ -4,10 +4,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -84,6 +87,8 @@ public class FXMLReadMaitreController implements Initializable {
     private Button id_event;
     @FXML
     private Button id_reclam;
+    @FXML
+    private TextField rech;
 
     /**
      * Initializes the controller class.
@@ -91,6 +96,7 @@ public class FXMLReadMaitreController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ListUser();
+        RechercherPersonne();
         try {
             ObservableList<String> Roles_Listes = FXCollections.observableArrayList(sp.readAllRoles());
 
@@ -137,14 +143,44 @@ public class FXMLReadMaitreController implements Initializable {
             cin_usr.setCellValueFactory(new PropertyValueFactory<>("cin"));
             tel_usr.setCellValueFactory(new PropertyValueFactory<>("tel"));
             col_roles.setCellValueFactory(new PropertyValueFactory<>("role"));
-
             tableViewAdmin.setItems(oblist);
+            tableViewAdmin.refresh();
 
         } catch (SQLException ex) {
             Logger.getLogger(FXMLReadMaitreController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+ private void RechercherPersonne(){
+         FilteredList<personne>filteredData=new FilteredList<>( oblist ,b -> true);
+            rech.setOnKeyReleased(e->{
+        rech.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate((Predicate<? super personne>)oblist -> {
+				// If filter text is empty, display all persons.
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (oblist.getNom().toLowerCase().contains(lowerCaseFilter) ) {
+					return true; // Filter matches first name.
+				} else if (oblist.getPrenom().toLowerCase().contains(lowerCaseFilter)) {
+					return true; }// Filter matches last name.
+                                 else if (oblist.getCin().toLowerCase().contains(lowerCaseFilter)) {
+					return true; }
+				//else if (Reclamation.getIdR().contains(newValue)){
+				    // return true;}
+				      
+				    	 return false; // Does not match.
+			});
+		});
+        SortedList<personne>soretedData=new SortedList<>(filteredData);
+        soretedData.comparatorProperty().bind(tableViewAdmin.comparatorProperty());
+        tableViewAdmin.setItems(soretedData);
+            });
+     }
     @FXML
     private void viderP() {
         Txt_Nom.setText(" ");
@@ -233,7 +269,13 @@ public class FXMLReadMaitreController implements Initializable {
     @FXML
     private void reclamer(ActionEvent event) {
     }
-
+                           
+    
+private void Actualiser() {
+      
+        tableViewAdmin.getItems().clear();
+        ListUser();
+    }
     @FXML
     private void deleteeP(ActionEvent event) throws SQLException {
         personne pr = tableViewAdmin.getSelectionModel().getSelectedItem();

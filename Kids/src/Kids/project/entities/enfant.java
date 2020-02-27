@@ -27,6 +27,11 @@ public class enfant {
         this.nom_enfant = nom_enfant;
         this.prenom_enfant = prenom_enfant;
     }
+    public enfant(int id ,String nom_enfant, String prenom_enfant) {
+          this.id_enfant = id;
+        this.nom_enfant = nom_enfant;
+        this.prenom_enfant = prenom_enfant;
+    }
 
     public enfant(int id_enfant, parent parent, classe classe, String nom_enfant, String prenom_enfant, String dateN_enfant) {
         this.id_enfant = id_enfant;
@@ -45,7 +50,6 @@ public class enfant {
         this.image_enfant = image_enfant;
         this.dateN_enfant = dateN_enfant;
     }
-    
 
     public enfant(String nom_enfant, String prenom_enfant, String image_enfant, String dateN_enfant) {
         this.nom_enfant = nom_enfant;
@@ -60,7 +64,6 @@ public class enfant {
         this.image_enfant = image_enfant;
         this.dateN_enfant = dateN_enfant;
     }
-    
 
     public enfant(classe classe, String nom_enfant, String prenom_enfant, String dateN_enfant) {
         this.classe = classe;
@@ -72,7 +75,7 @@ public class enfant {
 
     @Override
     public String toString() {
-return " " + nom_enfant +  prenom_enfant ;
+        return  id_enfant  + " " + nom_enfant + " " + prenom_enfant + "  " ;
     }
 
     @Override
